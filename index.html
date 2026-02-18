@@ -395,8 +395,8 @@
 <body>
 
 <div class="topbar">
-  <h1>CUET EEE — Front Page Generator</h1>
-  <span class="badge">EEE Dept.</span>
+  <h1>CUET — Front Page Generator</h1>
+  
 </div>
 
 <div class="workspace">
@@ -466,7 +466,7 @@
 
       <div>
         <label>Teacher's Department</label>
-        <input id="teacherDept" type="text" value="Dept. of Electrical and Electronic Engineering, CUET.">
+        <input id="teacherDept" type="text" >
       </div>
 
       <div class="divider"></div>
@@ -594,7 +594,7 @@
           <div>
             <div class="fp-submit-block-title">Submitted To:</div>
             <div class="fp-submit-box" id="fpTeacherBox">
-              <div style="color:#888; font-size:0.8rem;">Dept. of Electrical and Electronic Engineering, CUET.</div>
+              
             </div>
           </div>
         </div>
@@ -618,7 +618,7 @@
 <script>
   // Set today's date as default for submission
   const today = new Date().toISOString().split('T')[0];
-  document.getElementById('dateSub').value = today;
+  // date left blank by default
 
   function fmtDate(val) {
     if (!val) return '';
@@ -663,7 +663,7 @@
     teacherBox.innerHTML = `
       <div style="font-weight:600;">${tName}</div>
       ${tDesig ? `<div style="font-style:italic; font-size:0.83rem;">${tDesig}</div>` : ''}
-      <div style="color:#777; font-size:0.78rem; margin-top:6px;">${g('teacherDept') || 'Dept. of Electrical and Electronic Engineering, CUET.'}</div>
+      <div style="color:#777; font-size:0.78rem; margin-top:6px;">${g('teacherDept')}</div>
     `;
 
     s('fpStudentName', g('studentName'));
