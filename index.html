@@ -511,6 +511,24 @@
         </div>
       </div>
 
+      <div class="divider"></div>
+      <div class="sec-title">Typography</div>
+
+      <div>
+        <label>Choose Font Style</label>
+        <select id="fontChoice" onchange="applyFont()">
+          <option value="'Source Serif 4', Georgia, serif">Source Serif 4 (Default)</option>
+          <option value="'Times New Roman', Times, serif">Times New Roman</option>
+          <option value="Georgia, serif">Georgia</option>
+          <option value="'Palatino Linotype', Palatino, serif">Palatino</option>
+          <option value="'Courier New', Courier, monospace">Courier New</option>
+          <option value="Arial, Helvetica, sans-serif">Arial</option>
+          <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>
+          <option value="Verdana, Geneva, sans-serif">Verdana</option>
+          <option value="'Book Antiqua', Palatino, serif">Book Antiqua</option>
+        </select>
+      </div>
+
       <button class="btn-gen" onclick="generate()">⟳ Generate Front Page</button>
       <button class="btn-print" onclick="window.print()">⎙ Print / Save as PDF</button>
     </div>
@@ -606,6 +624,15 @@
     if (!val) return '';
     const d = new Date(val);
     return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+  }
+
+  function applyFont() {
+    const font = document.getElementById('fontChoice').value;
+    // Apply to the whole front page content area
+    document.querySelector('.fp-outer-border').style.fontFamily = font;
+    document.querySelectorAll('.fp-info-table td, .fp-submit-box, .fp-assignment-box, .fp-course, .fp-title, .fp-signature-line, .fp-date-text, .fp-teacher-name, .fp-teacher-title').forEach(el => {
+      el.style.fontFamily = font;
+    });
   }
 
   function generate() {
